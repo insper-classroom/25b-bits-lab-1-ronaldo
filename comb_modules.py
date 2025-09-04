@@ -102,7 +102,11 @@ def exe5(leds, sw):
 
     @always_comb
     def comb():
-        pass
+        led1 = sw[0] and sw[1]
+        leds[0].next = sw[0]
+        leds[1].next = led1
+        leds[2].next = not led1
+        leds[3].next = (not sw[0] and sw[1]) or (sw[0] and not sw[1])
 
     return instances()
 
